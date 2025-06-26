@@ -16,6 +16,7 @@ import Image from "next/image";
 const formSchema = z.object({
     meetingId: z.string().min(3, "Meeting ID must be at least 3 characters"),
     displayName: z.string().min(2, "Name must be at least 2 characters"),
+    email : z.string(),
     password: z.string().optional(), // Optional password field
 });
 
@@ -26,6 +27,7 @@ export default function JoinMeetingPage() {
         defaultValues: {
             meetingId: "",
             displayName: "",
+            email : "",
             password: "",
         },
     });
@@ -119,6 +121,29 @@ export default function JoinMeetingPage() {
                                                     <Input
                                                         id="displayName"
                                                         placeholder="How should we call you?"
+                                                        className="pl-10 h-11 text-gray-700 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                            </div>
+                                            <FormMessage className="text-red-500 text-sm" />
+                                        </FormItem>
+                                    )}
+                                />
+
+                                {/* Display Email Field */}
+                                <FormField
+                                    control={form.control}
+                                    name="displayName"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <Label className="text-gray-700">Your Email</Label>
+                                            <div className="relative">
+                                                <User className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-blue-500" />
+                                                <FormControl>
+                                                    <Input
+                                                        id="displayName"
+                                                        placeholder="Where we can contact you?"
                                                         className="pl-10 h-11 text-gray-700 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                                                         {...field}
                                                     />
