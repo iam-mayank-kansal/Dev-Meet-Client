@@ -19,7 +19,7 @@ export const Navbar = () => {
         { name: "Schedule Meeting", path: "/host-meeting/schedule" },
       ] 
     },
-    { name: "Community", path: "/community", icon: <Users className="w-5 h-5" /> },
+    // { name: "Community", path: "/community", icon: <Users className="w-5 h-5" /> },
     { name: "Profile", path: "/profile", icon: <User className="w-5 h-5" /> },
   ];
 
