@@ -3,9 +3,9 @@ import { ApiResponse } from '@nestjs/swagger';
 
 @Controller()
 export class AppController {
-  @Get()
+  @Get()  
   @ApiResponse({ status: 200, description: 'Server Running Fine.' })
-  getMessage(): string {
+  getBaseRoute(): string {
     return 'Server Running Fine!';
   }
 }

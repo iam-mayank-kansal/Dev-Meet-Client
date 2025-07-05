@@ -18,9 +18,7 @@ export const Navbar = () => {
         { name: "Instant Meeting", path: "/host-meeting/instant" },
         { name: "Schedule Meeting", path: "/host-meeting/schedule" },
       ] 
-    },
-    // { name: "Community", path: "/community", icon: <Users className="w-5 h-5" /> },
-    { name: "Profile", path: "/profile", icon: <User className="w-5 h-5" /> },
+    }
   ];
 
   const toggleDropdown = (itemName: string) => {
@@ -38,7 +36,7 @@ export const Navbar = () => {
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex">
+          <div className="hidden md:flex items-center space-x-6">
             <ul className="flex space-x-6">
               {navItems.map((item) => (
                 <li key={item.name} className="relative">
@@ -80,6 +78,22 @@ export const Navbar = () => {
                 </li>
               ))}
             </ul>
+
+            {/* Login and Signup Buttons */}
+            <div className="flex space-x-4 ml-4">
+              <Link 
+                href="/login" 
+                className="px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50 transition-colors font-medium"
+              >
+                Login
+              </Link>
+              <Link 
+                href="/signup" 
+                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium"
+              >
+                Sign Up
+              </Link>
+            </div>
           </div>
           
           {/* Mobile menu button */}
@@ -141,6 +155,24 @@ export const Navbar = () => {
                 )}
               </li>
             ))}
+
+            {/* Mobile Login and Signup Buttons */}
+            <div className="pt-2 space-y-2">
+              <Link
+                href="/login"
+                className="block w-full px-3 py-2 text-center text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50 transition-colors font-medium"
+                onClick={() => setIsOpen(false)}
+              >
+                Login
+              </Link>
+              <Link
+                href="/signup"
+                className="block w-full px-3 py-2 text-center bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium"
+                onClick={() => setIsOpen(false)}
+              >
+                Sign Up
+              </Link>
+            </div>
           </ul>
         </div>
       )}

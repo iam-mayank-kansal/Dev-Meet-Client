@@ -3,4 +3,5 @@ export interface EnvironmentVariables {
   APP_PORT: number;
   APP_ROUTE_PREFIX: string;
   SWAGGER_PATH?: string;
+  MONGO_URI: string;
 }
