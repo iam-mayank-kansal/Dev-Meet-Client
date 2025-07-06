@@ -1,16 +1,20 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { ConfigModule } from '@nestjs/config';
-import { AuthController } from './modules/auth/auth.controller';
-import { UsersController } from './modules/users/users.controller';
+import { ConfigModule } from './config/config.module';
+import mongooseConfig from './config/mongoose.config';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
-     ConfigModule.forRoot({
-      isGlobal: true, // So it's available everywhere without importing again
-    }),
+    ConfigModule, // Import the ConfigModule to load environment variables
+    mongooseConfig, // Import the Mongoose configuration for MongoDB connection
+    UsersModule
   ],
-  controllers: [AppController,AuthController,UsersController],
+
+  // Register your controllers here
+  controllers: [AppController],
+
+  // Import your services here
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }
