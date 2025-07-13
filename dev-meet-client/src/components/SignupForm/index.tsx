@@ -13,10 +13,10 @@ export const SignupForm = () => {
 
   const router = useRouter();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    name: 'abcd',
+    email: 'abcd@gmail.com',
+    password: 'ABCd@1234',
+    confirmPassword: 'ABCd@1234'
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,17 +33,16 @@ export const SignupForm = () => {
       alert("Passwords don't match!");
       return;
     }
-    const sendData = axios.post('/api/signup', formData);
+    const sendData = axios.post('http://localhost:8080/api/users/create', {...formData,role : 'user'});
     sendData.then((response) => {
-      if (response.status === 200) {
+      if (response.status === 200 || response.status === 201) {
         alert('Signup successful!');
         router.push('/login');
       } else {
         alert('Signup failed. Please try again.');
       }
     }).catch((error) => {
-      console.error('Error during signup:', error);
-      alert('An error occurred. Please try again later.');
+      alert( error.message);
     });
   };
 

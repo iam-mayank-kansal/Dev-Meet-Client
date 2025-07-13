@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { IsEnum } from "class-validator";
 import { HydratedDocument } from "mongoose";
 
 @Schema({timestamps: true}) // this will automatically add createdAt and updatedAt fields
@@ -15,6 +16,7 @@ export class User {
     password: string;
 
     @Prop({ required: true, type: String })
+    @IsEnum(['admin', 'user'], { message: 'role must be either admin or user' })
     role: string;
 
     @Prop({ type: String })

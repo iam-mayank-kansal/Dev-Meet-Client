@@ -5,14 +5,13 @@ import InputWithLabel from '../InputWithLabel';
 import { LoginFormData } from '@/lib/constraints';
 import { X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-
-
+import axios from 'axios';
 
 export const LoginForm = () => {
   const Router = useRouter();
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: 'test@gmail.com',
+    password: 'Test@123'
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,13 +24,23 @@ export const LoginForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Login form submitted:', formData);
+    const sendData = axios.post('http://localhost:8080/api/auth/login', formData);
+    sendData.then((response) => {
+      if (response.status === 200 || response.status === 201) {
+        alert('Login successful!');
+        Router.push('/');
+      } else {
+        alert('Login failed. Please try again.');
+      }
+    }).catch((error) => {
+      alert(error.message);
+    });
   };
 
   return (
     <div className="max-w-md mx-auto min-w-[400px] bg-white p-8 rounded-lg shadow-md relative">
-      <div className='cursor-pointer bg-red-500 p-2 rounded-[50%] flex justify-center items-center absolute right-4 top-4 z-[200' onClick={()=> Router.push('/')}>
-        <X className='text-white'/>
+      <div className='cursor-pointer bg-red-500 p-2 rounded-[50%] flex justify-center items-center absolute right-4 top-4 z-[200' onClick={() => Router.push('/')}>
+        <X className='text-white' />
       </div>
       <h2 className="text-2xl font-bold text-center text-gray-800 mb-6 mt-5">Log In to Your Account</h2>
       <form onSubmit={handleSubmit} className="space-y-4">

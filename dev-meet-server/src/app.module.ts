@@ -3,12 +3,14 @@ import { AppController } from './app.controller';
 import { ConfigModule } from './config/config.module';
 import mongooseConfig from './config/mongoose.config';
 import { UsersModule } from './modules/users/users.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
     ConfigModule, // Import the ConfigModule to load environment variables
     mongooseConfig, // Import the Mongoose configuration for MongoDB connection
-    UsersModule
+    UsersModule,
+    AuthModule
   ],
 
   // Register your controllers here
