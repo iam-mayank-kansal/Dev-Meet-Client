@@ -1,6 +1,9 @@
-import { Body, Controller, Get, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, Param, Patch, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/createUser.dto';
+import mongoose from 'mongoose';
+import { UpdateUserDto } from './dto/updateUser.dto';
+import isValidateUserId from 'src/lib/utils/helper';
 
 @Controller('users')
 export class UsersController {
@@ -20,7 +23,17 @@ export class UsersController {
 
     @Get(":id")
     getUserById(@Param('id') id: string) {
-        return this.userService.getUserById(id);
+        isValidateUserId(id);
+        return  this.userService.getUserById(id);
     }
+
+    @Patch('update/:id')
+    @UsePipes(new ValidationPipe())
+    updateUser(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+        isValidateUserId(id);
+        return this.userService.updateUser(id, updateUserDto);
+    }
+
+
 
 }
