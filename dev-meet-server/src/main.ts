@@ -7,26 +7,18 @@ import { EnvironmentVariables } from './config/env';
 import { ValidationPipe } from '@nestjs/common';
 import { AppSecurityLoader } from './lib/loaders/app_security.loader';
 import { SwaggerLoader } from './lib/loaders/swagger.loader';
-import { NODE_ENVIRONMENT } from './lib/contants/enum';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
-    logger: new Logger(), 
+    logger: new Logger(),
   });
 
   const config: ConfigService<EnvironmentVariables> = app.get(ConfigService);
 
-  const allowedOrigins =
-    config.get('NODE_ENV') !== NODE_ENVIRONMENT.PRODUCTION
-      ? '*'
-      : [
-        'https://Devmeet.com',
-      ];
 
   app.enableCors({
-    origin: allowedOrigins,
+    origin: 'http://localhost:3000',
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   });
 
   // Validation
@@ -43,7 +35,7 @@ async function bootstrap() {
   app.setGlobalPrefix(config.get('APP_ROUTE_PREFIX'), { exclude: ['metrics'] });
 
   // Swagger Docs
-  SwaggerLoader(app, config);
+  // SwaggerLoader(app, config);  
 
   // Start app
   await app.listen(config.get('APP_PORT'));

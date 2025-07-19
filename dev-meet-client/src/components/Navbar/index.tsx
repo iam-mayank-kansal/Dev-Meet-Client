@@ -157,7 +157,7 @@ export const Navbar = () => {
             ))}
 
             {/* Mobile Login and Signup Buttons */}
-            <div className="pt-2 space-y-2">
+            <div className="pt-2 space-y-2">z
               <Link
                 href="/login"
                 className="block w-full px-3 py-2 text-center text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50 transition-colors font-medium"

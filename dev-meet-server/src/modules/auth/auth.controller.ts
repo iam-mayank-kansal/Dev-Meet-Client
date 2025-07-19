@@ -18,11 +18,11 @@ export class AuthController {
             // set cookies 
             res.cookie('auth-cookie', token, {
                 httpOnly: true,
-                secure: process.env.NODE_ENV === 'production',
+                secure: false,
                 maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-                sameSite: 'lax',
+                sameSite: 'none',
             });
-            res.status(200).json({ message: 'Login successful', user });
+            return res.status(200).json({ message: 'Login successful', user, token });
         }
         catch (error) {
             throw new HttpException(error.message, 401);

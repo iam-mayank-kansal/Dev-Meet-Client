@@ -24,7 +24,16 @@ export const LoginForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const sendData = axios.post('http://localhost:8080/api/auth/login', formData);
+    const sendData = axios.post(
+      'http://localhost:8080/api/auth/login',
+      formData,
+      {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    );
     sendData.then((response) => {
       if (response.status === 200 || response.status === 201) {
         alert('Login successful!');
@@ -33,7 +42,7 @@ export const LoginForm = () => {
         alert('Login failed. Please try again.');
       }
     }).catch((error) => {
-      alert(error.message);
+      alert(error.response?.data?.message || error.message);
     });
   };
 

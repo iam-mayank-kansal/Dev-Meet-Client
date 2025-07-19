@@ -15,7 +15,7 @@ export class AuthService {
             throw new HttpException('Invalid credentials', 400);
         }
 
-        const payload = { email: user.email, sub: user._id, role: user.role };
+        const payload = {email: user.email, sub: user._id, role: user.role };
         const token = await this.jwtService.signAsync(payload, {
             secret: process.env.JWT_SECRET,
             expiresIn: process.env.JWT_EXPIRATION,
