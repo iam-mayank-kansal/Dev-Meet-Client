@@ -50,7 +50,7 @@ export const SignupForm = () => {
     <div className={`max-w-md mx-auto min-w-[400px] bg-white p-8 rounded-lg shadow-md relative`}>
       <div className='cursor-pointer bg-red-500 p-2 rounded-[50%] flex justify-center items-center absolute right-4 top-4 z-[200' onClick={() => router.push('/')}>
         <X className='text-white' />
-      </div>
+      </div>  
       <h2 className="text-2xl font-bold text-center text-gray-800 mb-6 mt-5">Create an Account</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         {SignupFormData.map((field, index) => (

@@ -6,7 +6,7 @@ import { ConfigService } from '@nestjs/config';
 import { EnvironmentVariables } from './config/env';
 import { ValidationPipe } from '@nestjs/common';
 import { AppSecurityLoader } from './lib/loaders/app_security.loader';
-import { SwaggerLoader } from './lib/loaders/swagger.loader';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
@@ -15,6 +15,7 @@ async function bootstrap() {
 
   const config: ConfigService<EnvironmentVariables> = app.get(ConfigService);
 
+  app.use(cookieParser());
 
   app.enableCors({
     origin: 'http://localhost:3000',

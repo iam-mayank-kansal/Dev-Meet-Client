@@ -18,7 +18,7 @@ export class AuthController {
             // set cookies 
             res.cookie('auth-cookie', token, {
                 httpOnly: true,
-                secure: false,
+                secure: true,
                 maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
                 sameSite: 'none',
             });
@@ -27,6 +27,15 @@ export class AuthController {
         catch (error) {
             throw new HttpException(error.message, 401);
         }
+    }
 
+    @Post('logout')
+    logout(@Res() res: Response) {
+        res.clearCookie('auth-cookie', {
+            httpOnly: true,
+            secure : true,
+            sameSite: 'none', 
+        });
+        return res.status(200).json({ message: 'Logout successful' });
     }
 }

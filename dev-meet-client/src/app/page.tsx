@@ -1,24 +1,17 @@
 "use client";
-import axios from "axios";
+import { fetchProfile } from "@/lib/helper";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
-    async function fetchProfile() {
-      try {
-        const res = await axios.get('http://localhost:8080/api/users/profile', {
-          withCredentials: true,
-        });
+    const getUser = async () => {
+      const data = await fetchProfile();
+      setUser(data);
+    };
 
-        setUser(res.data); 
-      } catch (err) {
-        console.error("Error fetching profile:", err);
-      }
-    }
-
-    fetchProfile();
+    getUser();
   }, []);
 
   return (
