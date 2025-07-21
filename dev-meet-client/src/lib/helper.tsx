@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Router } from "next/router";
 
 export const generateRandomId = () => {
     const randomId = Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -11,7 +10,7 @@ export async function fetchProfile() {
         const res = await axios.get('http://localhost:8080/api/users/profile', {
             withCredentials: true,
         });
-        return res.data 
+        return res.data
 
     } catch (err) {
         console.error("Error fetching profile:", err);
