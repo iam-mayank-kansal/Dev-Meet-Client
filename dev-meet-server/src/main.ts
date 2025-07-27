@@ -7,11 +7,14 @@ import { EnvironmentVariables } from './config/env';
 import { ValidationPipe } from '@nestjs/common';
 import { AppSecurityLoader } from './lib/loaders/app_security.loader';
 import * as cookieParser from 'cookie-parser';
+import { IoAdapter } from '@nestjs/platform-socket.io';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
-    logger: new Logger(),
+    // logger: new Logger(),
   });
+
+  app.useWebSocketAdapter(new IoAdapter(app)); // This enables socket.io
 
   const config: ConfigService<EnvironmentVariables> = app.get(ConfigService);
 
@@ -33,7 +36,8 @@ async function bootstrap() {
   AppSecurityLoader(app);
 
   // Route prefix
-  app.setGlobalPrefix(config.get('APP_ROUTE_PREFIX'), { exclude: ['metrics'] });
+  app.setGlobalPrefix(config.get('APP_ROUTE_PREFIX'), { exclude: ['socket.io', 'metrics'] });
+
 
   // Swagger Docs
   // SwaggerLoader(app, config);  
