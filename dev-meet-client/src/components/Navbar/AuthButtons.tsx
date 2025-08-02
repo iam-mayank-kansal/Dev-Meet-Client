@@ -1,8 +1,9 @@
 "use client";
+import { IUser } from "@/lib/interface";
 import { LogOut, User } from "lucide-react";
 import Link from "next/link";
 
-export default function AuthButtons({ user, onLogout, setIsOpen }: { user: any, onLogout: () => void, setIsOpen: (value: boolean) => void }) {
+export default function AuthButtons({ user, onLogout, setIsOpen }: { user: IUser | null, onLogout: () => void, setIsOpen: (value: boolean) => void }) {
   // This is a combined handler for the mobile logout button to also close the menu
   const handleMobileLogout = () => {
     onLogout();

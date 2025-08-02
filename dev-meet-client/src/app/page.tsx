@@ -1,9 +1,17 @@
 "use client";
 import { fetchProfile } from "@/lib/helper";
+import { IUser } from "@/lib/interface";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<IUser>({
+    name: "",
+    email: "",
+    password: "",
+    role: "user",
+    age: "",
+    dob: "",
+  });
 
   useEffect(() => {
     const getUser = async () => {

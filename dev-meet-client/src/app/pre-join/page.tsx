@@ -37,6 +37,10 @@ export default function PreJoinPage() {
       setCameraErr("Camera access denied.");
       setCameraGranted(false);
       setCheckingCam(false);
+      console.log("Camera access error:", e);
+      if (videoPreviewRef.current) {  
+        videoPreviewRef.current.srcObject = null; // Clear the video element if access is denied
+      }
     }
   }
 
@@ -53,6 +57,8 @@ export default function PreJoinPage() {
       setMicErr("Microphone access denied.");
       setMicGranted(false);
       setCheckingMic(false);
+      console.log("Microphone access error:", e);
+      
     }
   }
 

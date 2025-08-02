@@ -1,8 +1,9 @@
 import Link from "next/link";
 import AuthButtons from "./AuthButtons";
 import { navItemsData } from "@/lib/data";
+import { IUser } from "@/lib/interface";
 
-export default function MobileNavigation({ user, onLogout, setIsOpen }: { user: any, onLogout: () => void, setIsOpen: (value: boolean) => void }) {
+export default function MobileNavigation({ user, onLogout, setIsOpen }: { user: IUser | null, onLogout: () => void, setIsOpen: (value: boolean) => void }) {
     return (
         <div className="md:hidden bg-white border-t border-gray-200">
             <ul className="px-2 py-3 space-y-2">

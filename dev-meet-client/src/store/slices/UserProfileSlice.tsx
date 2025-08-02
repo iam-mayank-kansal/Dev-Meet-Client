@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchProfile, logoutUser } from "@/lib/helper";
+import { IUser } from "@/lib/interface";
 
 // Define a type for the slice state
 interface UserProfileState {
-    user: any; 
+    user: IUser | null; // User can be null if not logged in
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
     error: string | null; 
 }
