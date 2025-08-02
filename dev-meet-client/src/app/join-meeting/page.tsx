@@ -28,8 +28,7 @@ export default function JoinMeetingPage() {
   const handleJoin = () => {
     if (inputData.meetingId.trim()) {
       // ✅ Navigate with query param
-      // router.push(`/meeting?meetingId=${encodeURIComponent(inputData.meetingId.trim())}`);
-      router.push(`/pre-join?meetingId=${encodeURIComponent(inputData.meetingId.trim())}`);
+      router.push(`/meeting?meetingId=${encodeURIComponent(inputData.meetingId.trim())}`);
     } else {
       alert("Please enter a valid Meeting ID");
     }
