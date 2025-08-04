@@ -2,11 +2,11 @@ import { Home, Video, Users, User, LogIn, Mail, Github, Twitter, Linkedin } from
 
 export const Footer = () => {
   const navItems = [
-    { name: "Home", path: "/", icon: <Home className="w-5 h-5" /> },
-    { name: "Join Meeting", path: "/join", icon: <LogIn className="w-5 h-5" /> },
-    { name: "Host Meeting", path: "/host", icon: <Video className="w-5 h-5" /> },
-    { name: "Community", path: "/community", icon: <Users className="w-5 h-5" /> },
-    { name: "Profile", path: "/profile", icon: <User className="w-5 h-5" /> },
+    { name: "Home", path: "/", },
+    { name: "Join Meeting", path: "/join" },
+    { name: "Host Meeting", path: "/host", },
+    { name: "Community", path: "/community", },
+    { name: "Profile", path: "/profile" },
   ];
 
   const socialLinks = [
@@ -40,7 +40,6 @@ export const Footer = () => {
                     href={item.path}
                     className="flex items-center text-gray-600 hover:text-blue-600 transition-colors duration-200 text-sm"
                   >
-                    <span className="mr-2">{item.icon}</span>
                     {item.name}
                   </a>
                 </li>

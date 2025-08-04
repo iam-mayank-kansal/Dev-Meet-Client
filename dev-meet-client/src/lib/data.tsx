@@ -12,3 +12,58 @@ export const navItemsData = [
         ]
     }
 ];
+
+// Data for features and testimonials
+export const FEATURES = [
+  {
+    title: "Global Community",
+    desc: "Connect with scientists from every continent and collaborate in real time.",
+    icon: "🌍",
+  },
+  {
+    title: "Interactive Sessions",
+    desc: "Host or attend lectures, workshops, and peer discussions effortlessly.",
+    icon: "🎤",
+  },
+  {
+    title: "Seamless Scheduling",
+    desc: "Built-in calendar and reminders to synchronize meetings across time zones.",
+    icon: "📅",
+  },
+  {
+    title: "Resource Sharing",
+    desc: "Upload presentations, share data, and access recorded sessions securely.",
+    icon: "📂",
+  },
+  {
+    title: "Advanced Moderation",
+    desc: "Keep meetings productive with robust moderation and breakout rooms.",
+    icon: "🛡️",
+  },
+  {
+    title: "Multi-device Support",
+    desc: "Join from desktop or mobile, with optimized performance everywhere.",
+    icon: "📱",
+  },
+];
+
+export const TESTIMONIALS = [
+  {
+    quote: "This platform connects me to experts across the globe. Collaboration has never been so easy!",
+    name: "Dr. Ana Ribeiro",
+    country: "Brazil",
+    avatar: "🇧🇷",
+  },
+  {
+    quote: "Our students gained access to global lectures and mentorship opportunities.",
+    name: "Prof. Peter Li",
+    country: "Singapore",
+    avatar: "🇸🇬",
+  },
+  {
+    quote: "I organized an international seminar with scientists in five countries—incredible experience.",
+    name: "Dr. Tunde Afolabi",
+    country: "Nigeria",
+    avatar: "🇳🇬",
+  },
+];
