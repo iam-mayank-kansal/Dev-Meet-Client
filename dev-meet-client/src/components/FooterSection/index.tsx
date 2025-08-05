@@ -1,6 +1,6 @@
 import { navItems, socialLinks } from '@/lib/data';
 
-export const Footer = () => {
+export const FooterSection = () => {
 
   return (
     <footer className="bg-white shadow-inner ">
