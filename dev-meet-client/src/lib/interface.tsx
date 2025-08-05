@@ -17,3 +17,4 @@ export interface IUser {
   age?: string;
   dob?: string; // or `Date` if you're storing it as an actual date
 }
+export type SignalData = RTCSessionDescriptionInit | { candidate: RTCIceCandidateInit };
